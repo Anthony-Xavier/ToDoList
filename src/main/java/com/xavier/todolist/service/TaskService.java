@@ -4,11 +4,13 @@ import com.xavier.todolist.model.Status;
 import com.xavier.todolist.model.Task;
 import com.xavier.todolist.repositoy.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TaskService {
 
     @Autowired
@@ -26,7 +28,7 @@ public class TaskService {
 
     //Salva uma nova tarefa
     public Task saveTask(Task task){
-        task.setStatus(String.valueOf(Status.PENDENTE));
+        task.setStatus(Status.PENDENTE);
         task.setDataCriacao(LocalDate.now());
         return taskRepository.save(task);
     }
